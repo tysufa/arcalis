@@ -1,0 +1,77 @@
+---
+title: UnoCSS
+description: Use the UnoCSS framework to create the CSS styles.
+category: css
+---
+
+## Description
+
+This plugin allows using the [UnoCSS](https://unocss.dev/) utility-first CSS
+framework, compatible with Tailwind and Windi CSS.
+
+It analyzes the HTML code of the pages, searching for UnoCSS classes and
+generating the CSS code needed. It also processes the `.css` files to apply the
+[directives transformer](https://unocss.dev/transformers/directives) and
+[variant group transformer](https://unocss.dev/transformers/variant-group).
+
+<lume-code>
+
+```vento{title=hello.vto}
+---
+layout: layout.vto
+---
+<h1 class="bg-purple-500">Hello world</h1>
+</style>
+```
+
+```css{title=styles.css}
+.btn {
+  @apply font-bold py-2 px-4 rounded;
+}
+.btn-blue {
+  @apply bg-blue-500 hover:bg-blue-700 text-white;
+  padding-top: 1rem;
+}
+```
+
+</lume-code>
+
+The plugin uses the global
+[`cssFile`](../docs/configuration/config-file.md#cssfile) option to output the
+generated CSS code. You can use the `cssFile` option to change the filename, or
+set `false` to inline the code in the HTML pages using `<style>` elements.
+
+## Installation
+
+Import this plugin in your `_config.ts` file to use it:
+
+```js
+import lume from "@lumeland/lume";
+import unocss from "@lumeland/plugin-unocss";
+
+const site = lume();
+
+site.use(unocss(/* Options */));
+site.add("style.css"); //Add the entry point(s)
+
+export default site;
+```
+
+## Configuration
+
+This plugin accepts a configuration object with the available options:
+
+`options` : Configuration object for UnoCSS to define themes, shortcuts, etc.
+See the [UnoCSS docs for more info](https://unocss.dev/guide/config-file)
+
+`cssFile` : Set the name of the file to export the CSS code or `false` to insert
+the CSS code a `<style>` tag for each page.
+
+`transformers` : An array with all transformers to apply to the CSS files. By
+default loads `variantGroup` and `directives`. Set an empty array to disable
+this feature. See the
+[UnoCSS docs for more info](https://unocss.dev/config/transformers)
+
+`reset` : To apply a reset file. See the
+[UnoCSS docs for more info](https://unocss.dev/guide/style-reset). By default
+it's disabled.

@@ -1,0 +1,10 @@
+openGraphLayout: /layouts/og.tsx
+metas:
+  title: =title
+  description: =description
+  twitter: "@misteroom"
+  image: /logo.png
+  color: "#141b1f"
+  icon: /apple-touch-icon.png
+  generator: true
+  fediverse: "@lume@fosstodon.org"

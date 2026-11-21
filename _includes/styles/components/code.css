@@ -1,0 +1,63 @@
+@import "./github-theme.css";
+
+lume-code {
+  display: block;
+
+  & .hljs {
+    border-radius: 0 0 var(--border-radius) var(--border-radius) !important;
+    border-top: 0 !important;
+  }
+
+  & .lume-code-menu {
+    display: flex;
+    list-style: none;
+    padding: 0 1em;
+    margin: 0;
+    background: var(--color-background-2);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    column-gap: 1px;
+  }
+}
+
+lume-code-menu::part(dropdown-button) {
+  border-radius: 50%;
+  cursor: pointer;
+}
+lume-code-menu::part(dropdown-button):hover {
+  background-color: var(--color-background-1);
+}
+lume-code-menu::part(dropdown-links) {
+  background-color: var(--color-background-2);
+  top: 100%;
+  right: 0;
+  padding: 2px;
+  box-shadow: 0 5px 10px #0003;
+}
+
+.lume-code-tab {
+  --background: var(--color-background-2);
+  --background-hover: var(--color-background-3);
+
+  display: block;
+  border: none;
+  border-radius: 0;
+  padding: 10px 1em;
+  font: var(--text-caption);
+  text-align: left;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: var(--animation-duration);
+  background: var(--color-background-2);
+  color: var(--color-foreground-1);
+
+  &:hover {
+    background: var(--color-background-1);
+    color: var(--color-foreground);
+  }
+
+  &.is-active {
+    background: var(--color-background-1);
+    color: var(--color-foreground);
+    font: var(--text-caption-bold);
+  }
+}

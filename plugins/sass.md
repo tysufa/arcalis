@@ -1,0 +1,47 @@
+---
+title: SASS
+description: Compile SCSS files to CSS.
+category: css
+---
+
+## Description
+
+The `SASS` plugin loads and transforms your `.scss` files using the
+[Dart SASS](https://github.com/sass/dart-sass) library.
+
+## Installation
+
+Import this plugin in your `_config.ts` file to use it:
+
+```js
+import lume from "@lumeland/lume";
+import sass from "@lumeland/plugin-sass";
+
+const site = lume();
+
+site.use(sass(/* Options */));
+site.add("style.scss"); //Add the entry point(s)
+
+export default site;
+```
+
+## Includes
+
+By default, the plugin is configured to look into the `_includes` directory to
+find the imported files (you can change this behavior by editing the `includes`
+option):
+
+```css
+/* Import the SCSS file from _includes/sass/reset.scss */
+@import "sass/reset.scss";
+
+/* The extension is optional */
+@import "sass/reset";
+
+/* Import files using a relative path */
+@import "./variables.scss";
+```
+
+The output files have the same name as the input files, but with the `.css`
+extension. For example, the file `/styles/main.scss` outputs `/styles/main.css`.
+Take this into account when importing the styles in the HTML pages.

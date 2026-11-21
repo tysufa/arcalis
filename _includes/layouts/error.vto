@@ -1,0 +1,20 @@
+---
+layout: ./base.vto
+page_css: error.css
+---
+
+<div class="error">
+  <h1>{{ content.title }}</h1>
+
+  <figure class="error-fire">
+    {{ await comp.fire() }}
+  </figure>
+
+  {{ content.description |> md }}
+
+  <a href="{{ '/' |> url }}">
+    <button type="button" class="button is-primary is-big">
+      {{ content.button.title }}
+    </button>
+  </a>
+</div>

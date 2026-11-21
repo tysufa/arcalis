@@ -1,0 +1,39 @@
+---
+layout: ./base.vto
+page_css: showcase.css
+---
+
+<main class="showcase">
+  <header class="showcase-header">
+    <h1>{{ title }}</h1> {{ description |> md }}
+  </header>
+
+  <ul class="showcase-sites">
+    {{ for site of sites }}
+      <li>
+        <figure class="site">
+          <a href="{{ site.url }}" class="site-image">
+            <img
+              src="{{ site.img }}"
+              alt="Screenshot of the site"
+              width="300"
+              height="200"
+            >
+          </a>
+          <figcaption class="site-description">
+            <p>
+              <a href="{{ site.url }}" class="site-name">
+                {{ site.title }}
+              </a>
+            </p>
+
+            <p>
+              {{ site.description |> md(true) }}
+              {{ if site.code }}<a href="{{ site.code }}">(Code)</a>{{ /if }}
+            </p>
+          </figcaption>
+        </figure>
+      </li>
+    {{ /for }}
+  </ul>
+</main>

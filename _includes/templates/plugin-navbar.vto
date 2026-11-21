@@ -1,0 +1,25 @@
+<nav class="doc-navbar">
+  {{ for id, { title } of categories }}
+    {{ set pages = search.pages(`category=${id}`, "title") }}
+    {{ set open = search.page(`category=${id} url=${url}`) }}
+
+    <details class="doc-navbar-section" {{ if open }} open{{ /if }}>
+      <summary>
+        <span class="doc-navbar-section-title">{{ title }}</span>
+      </summary>
+      <ul class="doc-navbar-section-links">
+        {{ for page of pages }}
+          <li>
+            <a
+              href="{{ page.url }}"
+              {{ if page.url == url }}aria-current="page"{{ /if }}
+              title="{{ page.description }}"
+            >
+              {{ page.title }}
+            </a>
+          </li>
+        {{ /for }}
+      </ul>
+    </details>
+  {{ /for }}
+</nav>

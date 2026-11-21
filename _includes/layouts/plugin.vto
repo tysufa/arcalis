@@ -1,0 +1,27 @@
+---
+layout: ./base.vto
+page_css: docs.css
+---
+
+<div class="doc">
+  {{ include "templates/plugin-navbar.vto" }}
+
+  <main class="doc-content">
+    <header class="doc-header">
+      <h1>
+        {{ title }}
+        &nbsp;
+        <a href="https://npmx.dev/package/@lumeland/plugin-{{ basename }}">
+          <img height="20" src="https://img.shields.io/npm/dm/%40lumeland%2Fplugin-{{ basename}}?style=flat">
+        </a>
+      </h1>
+      {{ description |> md }}
+
+      <nav class="toc" toc="content"></nav>
+    </header>
+
+    <div class="doc-body" id="content">
+      {{ content }}
+    </div>
+  </main>
+</div>

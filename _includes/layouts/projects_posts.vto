@@ -1,0 +1,47 @@
+---
+layout: ./base.vto
+page_css: docs.css
+---
+<main class="doc">
+  <div class="doc-content">
+    <nav class="doc-breadcrumb" style="margin-bottom: 1.5rem;">
+      <a href="/projects/">← Back to Projects</a>
+    </nav>
+
+    <header class="doc-header">
+      <h1>{{ title }}</h1>
+      {{ if description }}
+        <p class="doc-description">{{ description }}</p>
+      {{ /if }}
+
+      {{ if code || demo }}
+        <div class="project-links" style="display: flex; gap: 0.75rem; margin-top: 1.25rem;">
+          {{ if demo }}
+            <a href="{{ demo }}" class="button is-primary" target="_blank" rel="noopener">
+              Live Demo
+            </a>
+          {{ /if }}
+          {{ if code }}
+            <a href="{{ code }}" class="button is-secondary" target="_blank" rel="noopener">
+              Source Code
+            </a>
+          {{ /if }}
+        </div>
+      {{ /if }}
+    </header>
+
+    {{ if img }}
+      <figure style="margin: 2rem 0;">
+        <img
+          src="{{ img }}"
+          alt="{{ title }}"
+          style="width: 100%; height: auto; border-radius: var(--border-radius, 8px);"
+        >
+      </figure>
+    {{ /if }}
+
+    <div class="doc-body">
+      {{ content }}
+    </div>
+  </div>
+</main>

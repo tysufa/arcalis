@@ -1,0 +1,43 @@
+layout: layouts/projects.vto
+title: Projects
+main_menu: projects
+description: |
+  This is a list of projects I built, either on my free time or for school
+
+sites:
+  - title: Miska
+    img: /img/showcase/miska.png
+    url: /projects_posts/test/
+    description: Sched ext scheduler for low pids
+    code: https://github.com/tysufa/miska
+
+  - title: Wishfs
+    img: /img/showcase/wishfs.png
+    url: https://github.com/tysufa/wishfs
+    description: Filesystem adding extents to ouichefs (a ext2 like filesystem)
+    code: https://github.com/tysufa/wishfs
+
+  - title: Bidic
+    img: /img/showcase/bidic.png
+    url:  https://github.com/tysufa/bidic
+    description: Bidirectional compiler between C and assembly
+    code: https://github.com/tysufa/wishfs
+
+  - title: Omega Race
+    img: /img/showcase/omega_race_presentation.png
+    url:  https://github.com/tysufa/omega_race
+    description: Game created with the pygame library
+    code: https://github.com/tysufa/omega_race
+
+  - title: Raycaster
+    img: /img/showcase/raycasting.png
+    url: https://github.com/tysufa/raycasting
+    description: Small raycaster made with python
+    code: https://github.com/tysufa/raycasting
+
+  - title: QFA
+    img: /img/showcase/qfa.webp
+    url: https://github.com/tysufa/qfa
+    description: Interpreted programming language made in go
+    code: https://github.com/tysufa/qfa
+

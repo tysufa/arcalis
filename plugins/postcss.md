@@ -1,0 +1,87 @@
+---
+title: PostCSS
+description: Transform your CSS code with PostCSS.
+category: css
+---
+
+## Description
+
+The `PostCSS` plugin loads and transforms your CSS files using the
+[PostCSS](https://postcss.org/) processor.
+
+## Installation
+
+Import this plugin in your `_config.ts` file to use it:
+
+```js
+import lume from "@lumeland/lume";
+import postcss from "@lumeland/plugin-postcss";
+
+const site = lume();
+
+site.use(postcss(/* Options */));
+site.add("style.css"); //Add the entry point(s)
+
+export default site;
+```
+
+## PostCSS Plugins
+
+PostCSS has [postcss_autoprefixer](https://autoprefixer.github.io/) plugin
+enabled by default to add automatically the vendor prefixes.
+
+Use the property `plugins` add more plugins. For example, to use the
+[postcss-nesting](https://www.npmjs.com/package/postcss-nesting) plugin:
+
+```js
+import postcss from "@lumeland/plugin-postcss";
+import nesting from "postcss-nesting";
+
+site.use(postcss({
+  plugins: [nesting()],
+}));
+```
+
+## Includes
+
+PostCSS plugin uses [postcss-import](https://github.com/postcss/postcss-import),
+to inline the local `@imports` by looking in the `_includes` directory.
+
+```css
+/* Import the CSS file from _includes/css/reset.css */
+@import "css/reset.css";
+
+/* Import the relative CSS file */
+@import "./variables.css";
+```
+
+Set `bundle` to `false` to disable this behavior and don't inline the local imports:
+
+```ts
+site.use(postcss({
+  bundle: false,
+}));
+```
+
+## The `postcss` filter
+
+This plugin also registers the `postcss` filter so you can transform CSS code in
+the template engines. For example:
+
+```vento
+{{ set css }}
+  body::after {
+    content: "Hello, the CSS world!";
+  }
+{{ /set }}
+
+<style>
+  {{ css |> postcss }}
+</style>
+```
+
+## Configure VSCode
+
+You can use the
+[Postcss extension for VS Code](https://marketplace.visualstudio.com/items?itemName=cpylua.language-postcss)
+for syntax highlight.

@@ -1,0 +1,269 @@
+{{# Original fire animation
+<div class="fire">
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+  <div class="flame"></div>
+</div>
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  version="1.1"
+  class="fire-effect"
+  width="0"
+  height="0"
+>
+  <defs>
+    <filter id="fire-blur">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+      <feColorMatrix
+        in="blur"
+        mode="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+        result="goo"
+      />
+      <feBlend in="SourceGraphic" in2="fire-blur" />
+    </filter>
+  </defs>
+</svg>
+
+<style>
+  .fire {
+    position: relative;
+    width: 12em;
+    height: 12em;
+    overflow: hidden;
+    border-radius: 100%;
+    filter: url(#fire-blur);
+  }
+  .flame,
+  .flame::after {
+    position: absolute;
+    border-radius: 100%;
+    animation-fill-mode: backwards;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier(0.5, 0.07, 0.64, 1);
+    animation-iteration-count: infinite;
+  }
+  .flame {
+    left: 12%;
+    bottom: 0;
+    width: 5em;
+    height: 5em;
+    background: hsl(0deg, 70%, 60%);
+    animation-name: firecircle;
+    will-change: transform;
+  }
+  .flame::after {
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background);
+    animation-name: fireafter;
+    will-change: opacity;
+    opacity: 0;
+  }
+  .flame:nth-child(1),
+  .flame:nth-child(1)::after {
+    animation-delay: -0.14s;
+  }
+  .flame:nth-child(1) {
+    margin-left: 0.8em;
+    margin-bottom: -1em;
+  }
+  .flame:nth-child(2),
+  .flame:nth-child(2)::after {
+    animation-delay: -0.28s;
+  }
+  .flame:nth-child(2) {
+    margin-left: 1.1em;
+    margin-bottom: -1.8em;
+  }
+  .flame:nth-child(3),
+  .flame:nth-child(3)::after {
+    animation-delay: -0.42s;
+  }
+  .flame:nth-child(3) {
+    margin-left: 3.8em;
+    margin-bottom: -1.8em;
+  }
+  .flame:nth-child(4),
+  .flame:nth-child(4)::after {
+    animation-delay: -0.56s;
+  }
+  .flame:nth-child(4) {
+    margin-left: 1.8em;
+    margin-bottom: -2.1em;
+  }
+  .flame:nth-child(5),
+  .flame:nth-child(5)::after {
+    animation-delay: -0.7s;
+  }
+  .flame:nth-child(5) {
+    margin-left: 3.8em;
+    margin-bottom: -2.1em;
+  }
+  .flame:nth-child(6),
+  .flame:nth-child(6)::after {
+    animation-delay: -0.84s;
+  }
+  .flame:nth-child(6) {
+    margin-left: 3.3em;
+    margin-bottom: -1em;
+  }
+  .flame:nth-child(7),
+  .flame:nth-child(7)::after {
+    animation-delay: -0.98s;
+  }
+  .flame:nth-child(7) {
+    margin-left: 4em;
+    margin-bottom: -2.2em;
+  }
+  .flame:nth-child(8),
+  .flame:nth-child(8)::after {
+    animation-delay: -1.12s;
+  }
+  .flame:nth-child(8) {
+    margin-left: 0.1em;
+    margin-bottom: -1.5em;
+  }
+  .flame:nth-child(9),
+  .flame:nth-child(9)::after {
+    animation-delay: -1.26s;
+  }
+  .flame:nth-child(9) {
+    margin-left: 4.2em;
+    margin-bottom: -2em;
+  }
+  .flame:nth-child(10),
+  .flame:nth-child(10)::after {
+    animation-delay: -1.4s;
+  }
+  .flame:nth-child(10) {
+    margin-left: 1.8em;
+    margin-bottom: -2.2em;
+  }
+  .flame:nth-child(11),
+  .flame:nth-child(11)::after {
+    animation-delay: -1.54s;
+  }
+  .flame:nth-child(11) {
+    margin-left: 3.8em;
+    margin-bottom: -2.2em;
+  }
+  .flame:nth-child(12),
+  .flame:nth-child(12)::after {
+    animation-delay: -1.68s;
+  }
+  .flame:nth-child(12) {
+    margin-left: 0.2em;
+    margin-bottom: -2em;
+  }
+  .flame:nth-child(13),
+  .flame:nth-child(13)::after {
+    animation-delay: -1.82s;
+  }
+  .flame:nth-child(13) {
+    margin-left: 0.1em;
+    margin-bottom: -2.1em;
+  }
+  .flame:nth-child(14),
+  .flame:nth-child(14)::after {
+    animation-delay: -1.96s;
+  }
+  .flame:nth-child(14) {
+    margin-left: 2.1em;
+    margin-bottom: -2.1em;
+  }
+  .flame:nth-child(15),
+  .flame:nth-child(15)::after {
+    animation-delay: -2.1s;
+  }
+  .flame:nth-child(15) {
+    margin-left: 0.9em;
+    margin-bottom: -1.6em;
+  }
+  @keyframes firecircle {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+
+    100% {
+      transform: translateY(-11em) scale(0);
+    }
+  }
+  @keyframes fireafter {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
+Original fire animation #}}
+
+<div class="lava-lamp">
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+  <div class="blob"></div>
+</div>
+
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+      <feColorMatrix
+        in="blur"
+        mode="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"
+        result="goo"
+      />
+      <feBlend in="SourceGraphic" in2="goo" />
+    </filter>
+  </defs>
+</svg>
+
+<style>
+.lava-lamp {
+  position: relative;
+  width: 14em;
+  height: 14em;
+  filter: url(#goo);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-primary);
+  animation: drift 8s ease-in-out infinite alternate;
+}
+
+.blob:nth-child(1) { width: 5.5em; height: 5.5em; top: 25%; left: 25%; animation-duration: 7s; }
+.blob:nth-child(2) { width: 4.5em; height: 4.5em; top: 45%; left: 45%; animation-duration: 9s; animation-delay: -2s; }
+.blob:nth-child(3) { width: 3.5em; height: 3.5em; top: 20%; left: 50%; animation-duration: 6s; animation-delay: -4s; }
+.blob:nth-child(4) { width: 4em;   height: 4em;   top: 55%; left: 20%; animation-duration: 10s; animation-delay: -1s; }
+.blob:nth-child(5) { width: 3em;   height: 3em;   top: 35%; left: 35%; animation-duration: 5s; animation-delay: -3s; }
+
+@keyframes drift {
+  0%   { transform: translate(-1.5em, -1em) scale(1); }
+  50%  { transform: translate(1.8em, 1.2em) scale(1.15); }
+  100% { transform: translate(-0.8em, 2em) scale(0.9); }
+}
+</style>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <script type="text/javascript">
+  const root = document.firstElementChild;
+  const mediaQuery = "(prefers-color-scheme: dark)";
+  const mediaMatch = window.matchMedia;
+  const currentMode = mediaMatch(mediaQuery).matches;
+
+  const storeTheme = (targetTheme) => {
+    if ("boolean" === typeof targetTheme) {
+      targetTheme = targetTheme ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", targetTheme);
+    localStorage.setItem("data-theme", targetTheme);
+  };
+
+  const storedTheme = ("data-theme" in localStorage)
+    ? localStorage.getItem("data-theme")
+    : currentMode;
+
+  storedTheme && storeTheme(storedTheme);
+  </script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Tysufa</title>
+
+    <meta name="color-scheme" content="light dark">
+
+    <link
+      rel="preconnect"
+      href="https://cdn.jsdelivr.net"
+      crossorigin="anonymous"
+    >
+    <link
+      rel="dns-prefetch"
+      href="https://cdn.jsdelivr.net"
+      crossorigin="anonymous"
+    >
+
+    <link rel="stylesheet" href="/styles/main.css">
+    <link {{# loading properly the katex properly #}}
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      crossorigin="anonymous"
+    >
+    <link rel="canonical" href="{{ url |> url(true) }}">
+
+    {{ if it.page_css }}
+      <link rel="stylesheet" href="/styles/pages/{{ page_css }}">
+    {{ /if }}
+
+    <script src="/main.js" type="module"></script>
+    {{#
+    <link rel="stylesheet" href="/pagefind/pagefind-component-ui.css">
+    <script src="/pagefind/pagefind-component-ui.js" type="module"></script>
+    #}}
+
+  </head>
+  <body>
+    {{ include "templates/navbar.vto" }}
+
+    <div>
+      {{ content }}
+    </div>
+    {{ include "templates/footer.vto" }}
+
+    <script type="module">
+    window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("switch-theme").addEventListener(
+      "click",
+      () => {
+        const currentTheme =
+          localStorage.getItem("data-theme") == "light" ||
+          (getComputedStyle(root).getPropertyValue(
+            "color-scheme",
+          ) == "light");
+        storeTheme(!!currentTheme);
+      },
+    );
+
+    mediaMatch(mediaQuery).addEventListener("change", (event) => {
+      storeTheme(event.matches);
+    });
+  }, false);
+</script>
+  </body>
+</html>

@@ -1,0 +1,111 @@
+---
+layout: ./base.vto
+page_css: theme.css
+---
+
+<main class="theme">
+  <div class="theme-info">
+    <nav class="theme-back">
+      <a href="/projects/">← Back to themes</a>
+    </nav>
+    <header class="theme-header">
+      <h1 class="theme-title">
+        {{ title }}
+      </h1>
+
+      <p class="theme-author">
+        By {{ author }}<br>
+        <a href="https://npmx.dev/package/@lumeland/theme-{{ basename }}">
+          <img height="20" src="https://img.shields.io/npm/dm/%40lumeland%2Ftheme-{{ basename}}?style=flat">
+        </a>
+      </p>
+
+      <div class="theme-description">
+        {{ description |> md }}
+      </div>
+    </header>
+
+    <div class="theme-install">
+      <p>Create project with this theme:</p>
+      <div class="terminal">
+        {{ set code = `npm create lume@latest -- --theme=${specifier}` }}
+        <pre><code>{{ code }}</code><lume-copy class="terminal-copy"><button aria-label="Copy code" data-text="{{ code }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg></button></lume-copy></pre>
+      </div>
+    </div>
+
+    <div class="theme-buttons">
+      {{ if demo }}
+        <a class="button is-primary is-big" href="{{ demo }}" target="_blank">
+          Open a live demo ↗
+        </a>
+      {{ /if }}
+      <a class="button is-secondary is-big" href="{{ repo }}" target="_blank">
+        See code ↗
+      </a>
+    </div>
+  </div>
+
+  <lume-devices class="theme-preview">
+    <form class="theme-preview-bar">
+      <div class="theme-preview-toggle">
+        <label>
+          <input type="radio" checked name="device" value="desktop">
+          <img
+            src='{{ "desktop:regular" |> icon("phosphor") }}'
+            alt="Desktop"
+            width="24"
+            inline
+          >
+        </label>
+        <label>
+          <input type="radio" name="device" value="mobile">
+          <img
+            src='{{ "device-mobile" |> icon("phosphor") }}'
+            alt="Mobile"
+            width="24"
+            inline
+          >
+        </label>
+      </div>
+
+      <div class="theme-preview-toggle">
+        <label>
+          <input type="radio" checked name="theme" value="light">
+          <img
+            src='{{ "sun-dim" |> icon("phosphor") }}'
+            alt="Light theme"
+            width="24"
+            inline
+          >
+        </label>
+        <label>
+          <input type="radio" name="theme" value="dark">
+          <img
+            src='{{ "moon" |> icon("phosphor") }}'
+            alt="Dark theme"
+            width="24"
+            inline
+          >
+        </label>
+      </div>
+    </form>
+
+    <figure>
+      <div class="device" data-device="desktop" data-theme="light">
+        <img src="/img/screenshots/{{ basename }}/desktop-light.webp">
+      </div>
+
+      <div class="device" data-device="desktop" data-theme="dark">
+        <img src="/img/screenshots/{{ basename }}/desktop-dark.webp">
+      </div>
+
+      <div class="device" data-device="mobile" data-theme="light">
+        <img src="/img/screenshots/{{ basename }}/mobile-light.webp">
+      </div>
+
+      <div class="device" data-device="mobile" data-theme="dark">
+        <img src="/img/screenshots/{{ basename }}/mobile-dark.webp">
+      </div>
+    </figure>
+  </lume-devices>
+</main>
